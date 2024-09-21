@@ -1,116 +1,153 @@
-# Speech Emotion Recognition using RAVDESS Dataset
+<!DOCTYPE html>
+<html>
+<head>
+<title>Speech Emotion Recognition using RAVDESS Dataset</title>
+</head>
+<body>
 
-This project leverages the RAVDESS dataset for Speech Emotion Recognition. The code utilizes Python-based machine learning libraries to extract features from audio data, train a model, and make predictions on emotional speech inputs. This documentation will guide you through setting up the environment, running the code, and understanding the functionality of each file.
+<h1>Speech Emotion Recognition using RAVDESS Dataset</h1>
 
-## Tools & Technologies Used
+<p>This project focuses on recognizing emotions from speech using the RAVDESS dataset. It utilizes Python-based machine learning libraries to extract audio features, train a model, and predict emotions from new audio inputs.</p>
 
-- **Python 3.8+**
-- **Librosa** (Audio processing)
-- **NumPy** (Numerical computations)
-- **Pandas** (Data handling)
-- **Scikit-learn** (Machine learning)
-- **TensorFlow** (Deep learning)
-- **PyAudio** (Audio recording)
-- **RAVDESS Dataset** (Speech Emotion Recognition dataset)
+<h2>Tools & Technologies Used</h2>
 
-## 1. Set up Virtual Environment
+<ul>
+<li>Python 3.8+</li>
+<li>Librosa (Audio processing)</li>
+<li>NumPy (Numerical computations)</li>
+<li>Pandas (Data handling)</li>
+<li>Scikit-learn (Machine learning)</li>
+<li>TensorFlow (Deep learning)</li>
+<li>PyAudio (Audio recording)</li>
+<li>RAVDESS Dataset (Speech Emotion Recognition dataset)</li>
+</ul>
 
-1. Open your terminal or command prompt.
-2. Navigate to your project folder:
+<h2>1. Set up Virtual Environment</h2>
 
-    ```bash
-    cd /path/to/your/project
-    ```
+<ol>
+<li>
+<p>Navigate to your project folder:</p>
 
-3. Create a virtual environment:
+<pre><code>cd /path/to/your/project
+</code></pre>
+</li>
+<li>
+<p>Create a virtual environment:</p>
 
-    ```bash
-    python -m venv venv
-    ```
+<pre><code>python -m venv venv
+</code></pre>
+</li>
+<li>
+<p>Activate the virtual environment:</p>
 
-4. Activate the virtual environment:
+<ul>
+<li>On Windows:
 
-    - On Windows:
+<pre><code>venv\Scripts\activate
+</code></pre>
+</li>
+<li>On Mac/Linux:
 
-      ```bash
-      venv\Scripts\activate
-      ```
+<pre><code>source venv/bin/activate
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
 
-    - On Mac/Linux:
+<h2>2. Install Dependencies</h2>
 
-      ```bash
-      source venv/bin/activate
-      ```
+<pre><code>pip install -r requirements.txt
+</code></pre>
 
-## 2. Install Dependencies
+<h2>3. Project Files Explanation</h2>
 
-Use the `requirements.txt` file to install the necessary libraries:
+<ul>
+<li><code>config.py</code>:  Defines project-wide configurations (dataset paths, model parameters, etc.).</li>
+<li><code>feature_extraction.py</code>: Extracts audio features (MFCCs, chromagrams) from audio files.</li>
+<li><code>labelcheck.py</code>:  Verifies the accuracy of emotion labels in the dataset.</li>
+<li><code>load_data.py</code>: Loads, processes, and prepares the dataset for training.</li>
+<li><code>train_model.py</code>:  Defines and trains the machine learning model.</li>
+<li><code>predict_emotion.py</code>:  Loads the trained model and predicts emotions from new audio.</li>
+<li><code>real_time_recording.py</code>:  Enables real-time audio recording and emotion prediction.</li>
+</ul>
 
-```bash
-pip install -r requirements.txt
-```
-# 3. Project Files Explanation
+<h2>4. How to Run the Code</h2>
 
-## Project Structure
+<h3>Step 1: Extract Features from Dataset</h3>
 
-### 1. `config.py`
-This file defines configuration settings used throughout the project to avoid hardcoding values. It includes paths to datasets, model parameters, and feature extraction settings.
+<pre><code>python feature_extraction.py
+</code></pre>
 
-**Key functionality:**
-- Centralizes configuration settings such as dataset paths and model parameters.
-- Ensures consistency in settings across all scripts.
+<h3>Step 2: Verify Labels (Optional)</h3>
 
-### 2. `feature_extraction.py`
-This script is responsible for extracting essential features from audio files, such as **MFCCs (Mel Frequency Cepstral Coefficients)** and **chromagrams**. These features are crucial for training the model to recognize various emotions in speech.
+<pre><code>python labelcheck.py
+</code></pre>
 
-**Key functionality:**
-- Reads audio files using the `librosa` library.
-- Extracts relevant audio features such as MFCC, Chroma, and Mel-Spectrogram.
-- Saves the extracted features for model training.
+<h3>Step 3: Load and Prepare Data</h3>
 
-### 3. `labelcheck.py`
-This script ensures that the labels (emotion categories) in the dataset are correctly assigned. It verifies the correctness of labels to ensure clean and accurate data for training.
+<pre><code>python load_data.py
+</code></pre>
 
-**Key functionality:**
-- Verifies the mapping between file names and emotion labels.
-- Handles potential errors in label assignment.
+<h3>Step 4: Train the Model</h3>
 
-### 4. `load_data.py`
-This script is responsible for loading the RAVDESS dataset and preparing it for training. It loads the audio data, applies feature extraction, and formats it for model training.
+<pre><code>python train_model.py
+</code></pre>
 
-**Key functionality:**
-- Loads audio data from the RAVDESS dataset.
-- Applies feature extraction using the `feature_extraction.py` script.
-- Splits the data into training and testing sets.
+<h3>Step 5: Make Predictions</h3>
 
-### 5. `train_model.py`
-This script defines the machine learning model and handles the training process. The model is built using **TensorFlow/Keras** to recognize emotions from the extracted audio features.
+<pre><code>python predict_emotion.py --file path_to_audio.wav
+</code></pre>
 
-**Key functionality:**
-- Builds a deep learning model using TensorFlow.
-- Trains the model on extracted features.
-- Saves the trained model for future predictions.
+<h3>Step 6: Real-Time Emotion Prediction</h3>
 
-### 6. `predict_emotion.py`
-This script loads the pre-trained model and predicts emotions from new audio inputs. It can be used to test the model with unseen data.
+<pre><code>python real_time_recording.py
+</code></pre>
 
-**Key functionality:**
-- Loads a pre-trained model.
-- Accepts audio files or real-time recordings for emotion prediction.
-- Outputs the predicted emotion.
+<h2>5. Requirements</h2>
 
-### 7. `real_time_recording.py`
-This script enables real-time audio recording using **PyAudio**. After recording, the script uses the trained model to predict the emotion in the recorded speech.
+<p>Make sure you have the following packages installed:</p>
 
-**Key functionality:**
-- Records audio using PyAudio.
-- Applies the same feature extraction methods used during training.
-- Predicts the emotion from the recorded speech using the pre-trained model.
+<ul>
+<li>librosa</li>
+<li>numpy</li>
+<li>pandas</li>
+<li>scikit-learn</li>
+<li>tensorflow</li>
+<li>pyaudio</li>
+</ul>
 
-# 4. How to Run the Project
+<p>You can install them manually using:</p>
 
-1. **Install dependencies**: Ensure you have all the required libraries installed by running:
-   ```bash
-   pip install -r requirements.txt
+<pre><code>pip install &lt;package_name&gt;
+</code></pre>
 
+<h2>6. General Workflow</h2>
 
+<ol>
+<li>Set up the virtual environment.</li>
+<li>Install dependencies.</li>
+<li>Extract features from the dataset.</li>
+<li>Train the model.</li>
+<li>Use the trained model for emotion prediction.</li>
+</ol>
+
+<h3>Example Commands:</h3>
+
+<p>To automate the steps, create a <code>run.sh</code> script:</p>
+
+<pre><code>#!/bin/bash
+source venv/bin/activate
+python feature_extraction.py
+python load_data.py
+python train_model.py
+</code></pre>
+
+<p>This script will automate feature extraction, data loading, and model training.</p>
+
+<h3>Remember:</h3>
+
+<p>Replace placeholders like <code>/path/to/your/project</code> and <code>path_to_audio.wav</code> with your actual file paths.</p>
+
+</body>
+</html>
