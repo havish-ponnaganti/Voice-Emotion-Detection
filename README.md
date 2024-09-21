@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Speech Emotion Recognition using RAVDESS Dataset</title>
 </head>
 <body>
 
