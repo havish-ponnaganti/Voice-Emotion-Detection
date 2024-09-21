@@ -21,6 +21,10 @@
 <li>RAVDESS Dataset (Speech Emotion Recognition dataset)</li>
 </ul>
 
+<h2>0. Download Dataset</h2>
+<p>RAVDESS Dataset : https://www.kaggle.com/datasets/uwrfkaggler/ravdess-emotional-speech-audio</p>
+Ensure that the dataset is correctly placed in the path defined in config.py.
+
 <h2>1. Set up Virtual Environment</h2>
 
 <ol>
